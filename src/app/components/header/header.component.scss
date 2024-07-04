@@ -1,0 +1,63 @@
+@import "../../../assets/style/colors.scss";
+@import "../../../assets/style/fonts.scss";
+@font-face {
+  font-family: Poppins-Medium;
+  src: url(../../../assets/Fonts/Poppins-Medium.ttf);
+}
+@font-face {
+  font-family: Poppins-Bold;
+  src: url(../../../assets/Fonts/Poppins-Bold.ttf);
+}
+
+// *:focus {
+//   outline: none;
+//   box-shadow: none;
+// }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  min-height: 4rem;
+  background-color: $white;
+  font-family: Poppins-Medium;
+}
+
+.logo-wrapper{
+  margin-left: 100px;
+  height: 4rem;
+  cursor: pointer;
+}
+
+.logo {
+  width: 200px;
+  height: 64px;
+}
+
+.nav-bar {
+  padding: 1rem;
+  margin-right: 100px;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+ 
+}
+
+.nav-link {
+  transition: font-weight 0.1s ease-in-out;
+  @include body-large;
+  color:$black;
+  
+  &:hover {
+      font-weight: 600;
+      color: $darkOrange;
+  }
+}

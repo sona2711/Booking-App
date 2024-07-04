@@ -1,0 +1,36 @@
+@import "../../../assets/style/colors.scss";
+@import "../../../assets/style/fonts.scss";
+@font-face {
+  font-family: Poppins-Medium;
+  src: url(../../../assets/Fonts/Poppins-Medium.ttf);
+}
+@font-face {
+  font-family: Poppins-Bold;
+  src: url(../../../assets/Fonts/Poppins-Bold.ttf);
+}
+
+
+.section-title {
+  @include heading2;
+  font-family: Poppins-Bold;
+}
+
+//Tranding part
+.trand-info-wrapper  {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.trand-info {
+  position: relative;
+}
+
+.section-subtitle {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  @include heading3;
+  font-family: Poppins-Bold;
+  color: $white;
+}

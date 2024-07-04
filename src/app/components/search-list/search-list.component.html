@@ -1,0 +1,83 @@
+<div class="container">
+    <app-map></app-map>
+    <main class="filter-search-wrapper">
+        <section class="filters-wrapper" aria-label="filters-wrapper">
+            <div class="filter-title-wrapper">
+                <h3 class="filter-title">Filter by:</h3>
+            </div>
+            <div class="filter-wrapper">
+                <h2>Your budget (per night)</h2>
+                <mat-slider min="200" max="500">
+                    <input value="300" matSliderStartThumb>
+                    <input value="400" matSliderEndThumb>
+                </mat-slider>
+                <p>AMD1000 - AMD40,000</p>
+            </div>
+            <section class="example-section filter-wrapper" [formGroup]="popularFilters">
+                <h4 class="filter-subtitle">Popular filters</h4>
+                <p><mat-checkbox formControlName="stars"> Stars</mat-checkbox></p>
+                <p><mat-checkbox formControlName="hotels">Hotels</mat-checkbox></p>
+                <p><mat-checkbox formControlName="freeWifi">Free Wifi</mat-checkbox></p>
+              </section>
+              <section class="example-section filter-wrapper" [formGroup]="facilities">
+                <h4 class="filter-subtitle">Facilities</h4>
+                <p><mat-checkbox formControlName="stars"> Stars</mat-checkbox></p>
+                <p><mat-checkbox formControlName="hotels">Hotels</mat-checkbox></p>
+                <p><mat-checkbox formControlName="freeWifi">Free Wifi</mat-checkbox></p>
+              </section>
+              <section class="example-section filter-wrapper" [formGroup]="propertyType">
+                <h4 class="filter-subtitle">Property Type</h4>
+                <p><mat-checkbox formControlName="stars"> Stars</mat-checkbox></p>
+                <p><mat-checkbox formControlName="hotels">Hotels</mat-checkbox></p>
+                <p><mat-checkbox formControlName="freeWifi">Free Wifi</mat-checkbox></p>
+              </section>\
+              <section class="example-section filter-wrapper" [formGroup]="propertyRating">
+                <h4 class="filter-subtitle">Property rating</h4>
+                <p><mat-checkbox formControlName="stars"> Stars</mat-checkbox></p>
+                <p><mat-checkbox formControlName="hotels">Hotels</mat-checkbox></p>
+                <p><mat-checkbox formControlName="freeWifi">Free Wifi</mat-checkbox></p>
+              </section>
+              <section class="example-section filter-wrapper" [formGroup]="reviewScore">
+                <h4 class="filter-subtitle">Review Score</h4>
+                <p><mat-checkbox formControlName="stars"> Stars</mat-checkbox></p>
+                <p><mat-checkbox formControlName="hotels">Hotels</mat-checkbox></p>
+                <p><mat-checkbox formControlName="freeWifi">Free Wifi</mat-checkbox></p>
+              </section>
+              <section class="example-section filter-wrapper" [formGroup]="distanceFrom">
+                <h4 class="filter-subtitle">Distance from downtown</h4>
+                <p><mat-checkbox formControlName="stars"> Stars</mat-checkbox></p>
+                <p><mat-checkbox formControlName="hotels">Hotels</mat-checkbox></p>
+                <p><mat-checkbox formControlName="freeWifi">Free Wifi</mat-checkbox></p>
+              </section>
+              <section class="example-section filter-wrapper" [formGroup]="funThings">
+                <h4 class="filter-subtitle">Fun Things To Do</h4>
+                <p><mat-checkbox formControlName="stars"> Stars</mat-checkbox></p>
+                <p><mat-checkbox formControlName="hotels">Hotels</mat-checkbox></p>
+                <p><mat-checkbox formControlName="freeWifi">Free Wifi</mat-checkbox></p>
+              </section>
+              <section class="example-section filter-wrapper" [formGroup]="roomAccessibility">
+                <h4 class="filter-subtitle">Room Accessibility</h4>
+                <p><mat-checkbox formControlName="stars"> Stars</mat-checkbox></p>
+                <p><mat-checkbox formControlName="hotels">Hotels</mat-checkbox></p>
+                <p><mat-checkbox formControlName="freeWifi">Free Wifi</mat-checkbox></p>
+              </section>
+           
+    
+         
+            <div class="filter-wrapper">
+                <h3 class="filter-subtitle">Room Accessibility</h3>
+                <input type="checkbox" name="" id="">
+                <input type="checkbox" name="" id="">
+                <input type="checkbox" name="" id="">
+                <input type="checkbox" name="" id="">
+            </div>
+        </section>
+        <section class="search-list-wrapper" aria-label="search-list-wrapper">
+            <div class="search-list"  *ngFor="let item of searchList">
+
+
+
+            </div>
+        </section>
+    </main>
+</div>

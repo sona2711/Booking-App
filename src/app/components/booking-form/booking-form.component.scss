@@ -1,0 +1,27 @@
+@import "../../../assets/style/colors.scss";
+@import "../../../assets/style/fonts.scss";
+@font-face {
+  font-family: Poppins-Medium;
+  src: url(../../../assets/Fonts/Poppins-Medium.ttf);
+}
+@font-face {
+  font-family: Poppins-Bold;
+  src: url(../../../assets/Fonts/Poppins-Bold.ttf);
+}
+
+mat-tab-group.booking-form-wrapper {
+  background-color: $darkOrange;
+  @include body-large;
+  font-family:Poppins-Bold;
+}
+
+mat-tab.booking-form {
+  transition: font-weight 0.1s ease-in-out;
+  @include body-large;
+  
+  &:hover {
+      font-weight: 600;
+      color: $white;
+      background-color: $ligthOrange;
+  }
+}

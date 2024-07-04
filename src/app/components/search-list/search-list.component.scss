@@ -1,0 +1,42 @@
+@import "../../../assets/style/colors.scss";
+@import "../../../assets/style/fonts.scss";
+@font-face {
+  font-family: Poppins-Medium;
+  src: url(../../../assets/Fonts/Poppins-Medium.ttf);
+}
+@font-face {
+  font-family: Poppins-Bold;
+  src: url(../../../assets/Fonts/Poppins-Bold.ttf);
+}
+
+
+// Filter section styling
+.filter-search-wrapper {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.filters-wrapper {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid $darkOrange
+}
+
+.filter-title {
+    @include heading2;
+    font-family: Poppins-Bold;
+}
+
+.filter-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10px;
+}
+
+.filter-subtitle {
+  @include heading3;
+  font-family: Poppins-Bold;
+}

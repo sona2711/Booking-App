@@ -1,0 +1,37 @@
+<mat-tab-group class="booking-form-wrapper">
+    <mat-tab class="booking-form"  label="Hotels">
+        <ng-template mat-tab-label>
+            <!-- <h1>Find your next stay</h1>
+            <h2>Search deals on hotels, homes, and much more...</h2>   -->
+            Choose the date
+            <!-- <ng-template mat-tab-label>
+                <mat-form-field>
+                    <mat-label>Enter a date range</mat-label>
+                    <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+                      <input matStartDate formControlName="start" placeholder="Start date">
+                      <input matEndDate formControlName="end" placeholder="End date">
+                    </mat-date-range-input>
+                    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+                  
+                    @if (range.controls.start.hasError('matStartDateInvalid')) {
+                      <mat-error>Invalid start date</mat-error>
+                    }
+                    @if (range.controls.end.hasError('matEndDateInvalid')) {
+                      <mat-error>Invalid end date</mat-error>
+                    }
+                  </mat-form-field>
+            </ng-template> -->
+        </ng-template>
+    </mat-tab>
+    <mat-tab class="booking-form"  label="Flight">
+       Flight
+    </mat-tab>
+    <mat-tab class="booking-form"  label="Transportation">
+        <ng-template mat-tab-label>
+        third
+        </ng-template>
+    </mat-tab>
+</mat-tab-group>
+  

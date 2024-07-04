@@ -1,0 +1,121 @@
+@import "../../../assets/style/colors.scss";
+@import "../../../assets/style/fonts.scss";
+
+@font-face {
+  font-family: Poppins-Medium;
+  src: url(../../../assets/Fonts/Poppins-Medium.ttf);
+}
+@font-face {
+  font-family: Poppins-Bold;
+  src: url(../../../assets/Fonts/Poppins-Bold.ttf);
+}
+
+*:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Poppins-Medium;
+}
+
+.login-wrapper{
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: min-content;
+  justify-content:space-between;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 100px
+}
+
+.login-title{
+  @include heading1;
+  color: $black;
+  font-family:  Poppins-Bold;
+  margin-bottom: 20px;
+}
+
+.login-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.login-tabs{
+  margin-bottom: 70px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  background-color: $ligthGreen;
+  border-radius:5px;
+
+  .tab{
+    @include heading3;
+    color: $black;
+    background-color: $ligthGreen;
+    border-radius: 5px;
+    width:49%;
+    height: 50px;
+  }
+  .tabFocus{
+    background-color: $white;
+    box-shadow: 2px 2px $ligthGreen;
+  }
+}
+
+.sign-in,
+.register{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  @include heading5;
+  color: $black;
+}
+input {
+  margin-bottom: 20px;
+  outline: none;
+  border:none;
+  border-bottom: 1px solid $ligthOrange;
+}
+
+.input-title{ 
+  @include heading5;
+  color: $black;
+}
+input[type="checkbox"] {
+  accent-color: $white;
+  margin-right: 5px;
+  border: 1px solid $ligthGreen;
+}
+.body-small{
+  @include body-small;
+  color: $black;
+}
+
+.dark-btn{
+  background-color: $darkOrange;
+  color:$white
+ }
+.dark-btn:hover{
+   background-color:$white;
+   color:$black;
+   border: 1px solid $ligthGreen
+}
+.reminder{
+  text-align: center;
+  cursor: pointer;
+  margin-top: 5px;
+}
+.error{
+  @include body-small;
+  color: $errors;
+  margin-bottom: 5px;
+}
