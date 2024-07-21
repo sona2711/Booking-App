@@ -3,10 +3,10 @@
     <main class="filter-search-wrapper">
         <section class="filters-wrapper" aria-label="filters-wrapper">
             <div class="filter-title-wrapper">
-                <h3 class="filter-title">Filter by:</h3>
+                <h4 class="filter-title">Filter by:</h4>
             </div>
             <div class="filter-wrapper">
-                <h2>Your budget (per night)</h2>
+                <h5>Your budget (per night)</h5>
                 <mat-slider min="200" max="500">
                     <input value="300" matSliderStartThumb>
                     <input value="400" matSliderEndThumb>
@@ -14,70 +14,85 @@
                 <p>AMD1000 - AMD40,000</p>
             </div>
             <section class="example-section filter-wrapper" [formGroup]="popularFilters">
-                <h4 class="filter-subtitle">Popular filters</h4>
+                <h5 class="filter-subtitle">Popular filters</h5>
                 <p><mat-checkbox formControlName="stars"> Stars</mat-checkbox></p>
                 <p><mat-checkbox formControlName="hotels">Hotels</mat-checkbox></p>
                 <p><mat-checkbox formControlName="freeWifi">Free Wifi</mat-checkbox></p>
               </section>
               <section class="example-section filter-wrapper" [formGroup]="facilities">
-                <h4 class="filter-subtitle">Facilities</h4>
-                <p><mat-checkbox formControlName="stars"> Stars</mat-checkbox></p>
-                <p><mat-checkbox formControlName="hotels">Hotels</mat-checkbox></p>
-                <p><mat-checkbox formControlName="freeWifi">Free Wifi</mat-checkbox></p>
+                <h5 class="filter-subtitle">Facilities</h5>
+                <p><mat-checkbox formControlName="wifi"> Free Wifi</mat-checkbox></p>
+                <p><mat-checkbox formControlName="pool">Pool</mat-checkbox></p>
+                <p><mat-checkbox formControlName="parking">Parking</mat-checkbox></p>
+                <p><mat-checkbox formControlName="gym">Gym</mat-checkbox></p>
+                <p><mat-checkbox formControlName="spa">Spa</mat-checkbox></p>
               </section>
               <section class="example-section filter-wrapper" [formGroup]="propertyType">
-                <h4 class="filter-subtitle">Property Type</h4>
-                <p><mat-checkbox formControlName="stars"> Stars</mat-checkbox></p>
-                <p><mat-checkbox formControlName="hotels">Hotels</mat-checkbox></p>
-                <p><mat-checkbox formControlName="freeWifi">Free Wifi</mat-checkbox></p>
+                <h5 class="filter-subtitle">Property Type</h5>
+                <p><mat-checkbox formControlName="hotel"> Hotel</mat-checkbox></p>
+                <p><mat-checkbox formControlName="motel">Motel</mat-checkbox></p>
+                <p><mat-checkbox formControlName="resort">Resort</mat-checkbox></p>
+                <p><mat-checkbox formControlName="hostel">Hostel</mat-checkbox></p>
               </section>\
               <section class="example-section filter-wrapper" [formGroup]="propertyRating">
-                <h4 class="filter-subtitle">Property rating</h4>
-                <p><mat-checkbox formControlName="stars"> Stars</mat-checkbox></p>
-                <p><mat-checkbox formControlName="hotels">Hotels</mat-checkbox></p>
-                <p><mat-checkbox formControlName="freeWifi">Free Wifi</mat-checkbox></p>
+                <h5 class="filter-subtitle">Property rating</h5>
+                <p><mat-checkbox formControlName="star_1"> 1</mat-checkbox></p>
+                <p><mat-checkbox formControlName="star_2"> 2</mat-checkbox></p>
+                <p><mat-checkbox formControlName="star_3"> 3</mat-checkbox></p>
+                <p><mat-checkbox formControlName="star_4"> 4</mat-checkbox></p>
+                <p><mat-checkbox formControlName="star_5"> 5</mat-checkbox></p>
               </section>
               <section class="example-section filter-wrapper" [formGroup]="reviewScore">
-                <h4 class="filter-subtitle">Review Score</h4>
-                <p><mat-checkbox formControlName="stars"> Stars</mat-checkbox></p>
-                <p><mat-checkbox formControlName="hotels">Hotels</mat-checkbox></p>
-                <p><mat-checkbox formControlName="freeWifi">Free Wifi</mat-checkbox></p>
+                <h5 class="filter-subtitle">Review Score</h5>
+                <p><mat-checkbox formControlName="wonderful"> Wonderful: 9+</mat-checkbox></p>
+                <p><mat-checkbox formControlName="veryGood">Very Good: 8+</mat-checkbox></p>
+                <p><mat-checkbox formControlName="good">Good: 7+</mat-checkbox></p>
+                <p><mat-checkbox formControlName="pleasant">Pleasant: 6+</mat-checkbox></p>
               </section>
               <section class="example-section filter-wrapper" [formGroup]="distanceFrom">
-                <h4 class="filter-subtitle">Distance from downtown</h4>
-                <p><mat-checkbox formControlName="stars"> Stars</mat-checkbox></p>
-                <p><mat-checkbox formControlName="hotels">Hotels</mat-checkbox></p>
-                <p><mat-checkbox formControlName="freeWifi">Free Wifi</mat-checkbox></p>
+                <h5 class="filter-subtitle">Distance from downtown</h5>
+                <p><mat-checkbox formControlName="lessThan1Km"> Less than 1 km</mat-checkbox></p>
+                <p><mat-checkbox formControlName="lessThan3Km">Less than 3 km</mat-checkbox></p>
+                <p><mat-checkbox formControlName="lessThan5Km">Less than 5 km</mat-checkbox></p>
               </section>
               <section class="example-section filter-wrapper" [formGroup]="funThings">
-                <h4 class="filter-subtitle">Fun Things To Do</h4>
+                <h5 class="filter-subtitle">Fun Things To Do</h5>
                 <p><mat-checkbox formControlName="stars"> Stars</mat-checkbox></p>
                 <p><mat-checkbox formControlName="hotels">Hotels</mat-checkbox></p>
                 <p><mat-checkbox formControlName="freeWifi">Free Wifi</mat-checkbox></p>
+              </section>
+              <section class="example-section filter-wrapper" [formGroup]="propertyAccessibility">
+                <h5 class="filter-subtitle">Property Accessibility</h5>
+                <p><mat-checkbox formControlName="toiletWithGrabRails"> Toilet with grab rails</mat-checkbox></p>
+                <p><mat-checkbox formControlName="raisedToilet">Raised toilet</mat-checkbox></p>
+                <p><mat-checkbox formControlName="loweredSink">Lowered sink</mat-checkbox></p>
+                <p><mat-checkbox formControlName="auditoryGuidance">Auditory guidance</mat-checkbox></p>
+
               </section>
               <section class="example-section filter-wrapper" [formGroup]="roomAccessibility">
-                <h4 class="filter-subtitle">Room Accessibility</h4>
-                <p><mat-checkbox formControlName="stars"> Stars</mat-checkbox></p>
-                <p><mat-checkbox formControlName="hotels">Hotels</mat-checkbox></p>
-                <p><mat-checkbox formControlName="freeWifi">Free Wifi</mat-checkbox></p>
+                <h5 class="filter-subtitle">Room Accessibility</h5>
+                <p><mat-checkbox formControlName="entireUnitLocatedOnGroundFloor"> Entire unit located on ground floor</mat-checkbox></p>
+                <p><mat-checkbox formControlName="rollInShower">Roll-in shower</mat-checkbox></p>
+                <p><mat-checkbox formControlName="walkInShower">Walk-in shower</mat-checkbox></p>
+                <p><mat-checkbox formControlName="raisedToilet">Raised toilet</mat-checkbox></p>
+                <p><mat-checkbox formControlName="lowerSink">Lower sink</mat-checkbox></p>
               </section>
-           
-    
-         
-            <div class="filter-wrapper">
-                <h3 class="filter-subtitle">Room Accessibility</h3>
-                <input type="checkbox" name="" id="">
-                <input type="checkbox" name="" id="">
-                <input type="checkbox" name="" id="">
-                <input type="checkbox" name="" id="">
-            </div>
         </section>
-        <section class="search-list-wrapper" aria-label="search-list-wrapper">
-            <div class="search-list"  *ngFor="let item of searchList">
-
-
-
+        <section class="search-result-wrapper" aria-label="search-result-wrapper">
+          @for (hotel of  searchList; track hotel) {
+            <div class="hotel-container">
+              <div class="hotel-img-wrapper">
+                <img src={{hotel.img[0]}} alt="Hotel Image" width="300px"/>
+              </div>
+              <div class="hotel-info-wrapper">
+                <h4 class="hotel-info-title">{{hotel.name}}</h4>
+                <div class="hotel-location-info"><a href="#">{{hotel.location}}</a></div>
+                <p class="hotel-score-info">{{hotel.reviewScore}}</p>
+                <p class="hotel-distance-info">{{hotel.distanceFromDowntown}}</p>
+              </div>
+              <button class="show-btn">See Availability</button>
             </div>
+          }
         </section>
     </main>
 </div>

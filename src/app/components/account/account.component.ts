@@ -39,74 +39,62 @@ export class AccountComponent implements OnInit {
     private authService: AuthService,
     private http: HttpClient) {
 
-    //  this.authService.users.find(el => {
-    //   let userInfo = JSON.parse(localStorage.getItem("user") || '{}')
-    //   if (userInfo.id === el.id) {
-    //   this.cartItemsService.getCardList().find(el => userInfo.bagItems.push(el.id))
-    //   this.productListService.getLikedList().find(el => userInfo.likedItems.push(el))
-    //   }
-    // })
+      let user = this.authService.getUser();
+      if (Object.keys(user).length > 0) {
+        this.userInfo = user;
+      }
   }
 
   ngOnInit(): void {
    window.scroll(0,0)
   }
 
-  // signIn() {
-  //   this.login = !this.login
-  //   if (this.signInForm.status === 'INVALID') return;
-  //   console.log(this.signInForm.value)
-  //   this.authService.login(this.signInForm.value).subscribe(res => {
-  //     let user = this.authService.users.find( el => el.username === this.signInForm.value.username)
-  //       let userInfo = {
-  //         id: user?.id,
-  //         username: user?.username,
-  //         token: res,
-  //         likedItems: user?.likedItems,
-  //         bagItems: user?.bagItems,
-  //         orders: user?.orders,
-  //         billingAddress: user?.billingAddress,
-  //         shippingAddress: user?.shippingAddress,
-  //       }
-  //       localStorage.setItem("user", JSON.stringify(userInfo))
-  //       this.userInfo = userInfo
-  //       this.authService.subject.next('')
-     
-  //     this.router.navigateByUrl('/home')
-     
-  //   } ,(error)=>{console.log(error)}
-  
-  //   )
+   signIn() {
+    this.login = !this.login;
+    if (this.signInForm.status === 'INVALID') return;
+    console.log(this.signInForm.value);
 
-  // }
+    this.authService.login(this.signInForm.value).subscribe(res => {
+      let user = this.authService.users.find(el => el.username === this.signInForm.value.username);
+      if (user) {
+        let userInfo = {
+          id: user.id,
+          username: user.username,
+          token: res,
+          likedItems: user.likedItems,
+          orders: user.orders,
+        };
+        this.authService.saveUser(userInfo);
+        this.userInfo = userInfo;
+        this.authService.subject.next('');
+        this.router.navigateByUrl('/home');
+      }
+    }, error => {
+      console.log(error);
+    });
+  }
 
-
-
-//    createAccount() {
-//     this.register = !this.register
-//     if (this.registerForm.status === 'INVALID') return;
-//     if (this.registerForm.value.password === this.registerForm.value.confirmPass && this.registerForm.value.agree) {
-//       let newUser = this.registerForm.value
-//       this.http.post(this.authService.address, newUser)
-//       let userInfo = {
-//         id: 1,
-//         username: newUser.displayName,
-//         token: "125433347262",
-//         likedItems: this.productListService.getLikedList(),
-//         bagItems: this.cartItemsService.getCardList(),
-//         orders: [],
-//         billingAddress: {},
-//         shippingAddress: {},
-//       }
-//       localStorage.setItem("user", JSON.stringify(userInfo))
-//       this.userInfo = userInfo
-//       this.authService.subject.next('')
-//       this.authService.registUsers.push(newUser)
-//       console.log(this.registerForm.value)
-//       this.router.navigateByUrl("/home")
-
-//     }
-//   }
-// }
-
+  createAccount() {
+    this.register = !this.register;
+    if (this.registerForm.status === 'INVALID') return;
+    if (this.registerForm.value.password === this.registerForm.value.confirmPass && this.registerForm.value.agree) {
+      let newUser = this.registerForm.value;
+      this.http.post(this.authService.address, newUser).subscribe(() => {
+        let userInfo = {
+          id: 1,
+          username: newUser.displayName,
+          token: "125433347262",
+          likedItems: [],
+          orders: [],
+        };
+        this.authService.saveUser(userInfo);
+        this.userInfo = userInfo;
+        this.authService.subject.next('');
+        this.authService.registUsers.push(newUser);
+        console.log(this.registerForm.value);
+        this.router.navigateByUrl("/home");
+      });
+    }
+  }
 }
+

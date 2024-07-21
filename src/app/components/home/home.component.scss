@@ -10,9 +10,29 @@
 }
 
 
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  padding:100px;
+  margin: auto;
+  
+
+  @media screen and (max-width: 576px){
+    padding: 0 30px 0 30px;
+  }
+}
+
 .section-title {
   @include heading2;
   font-family: Poppins-Bold;
+
+  @media screen and (max-width: 576px){
+    @include heading3;
+  }
 }
 
 //Tranding part
@@ -24,6 +44,26 @@
 }
 .trand-info {
   position: relative;
+  width: 300px;
+  border-radius: 8px;
+
+  @media screen and (max-width: 576px){
+    width: 300px;
+  }
+}
+
+.trand-img {
+  padding: 10px;
+  width: 300px;
+  height: 300px; 
+}
+.scroll-container {
+  display: flex;
+  flex-wrap: nowrap;
+  gap:1rem;
+  overflow: auto;
+  white-space: nowrap;
+  padding: 10px;
 }
 
 .section-subtitle {
@@ -33,4 +73,42 @@
   @include heading3;
   font-family: Poppins-Bold;
   color: $white;
+
+
+  @media screen and (max-width: 576px){
+    @include heading4;
+  }
+}
+
+//explore Part
+.explore-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+.explore-img {
+  padding: 10px;
+  width: 200px;
+  height: 200px; 
+}
+.subtitle {
+  @include body-large;
+  font-family: Poppins-Bold;
+}
+
+
+div::-webkit-scrollbar{
+  width: 6px;
+}
+
+div::-webkit-scrollbar-track{
+  background-color: $white;
+  border-radius: 12px;
+}
+
+div::-webkit-scrollbar-thumb{
+  background-color: $ligthGreen;
+  border-radius: 12px;
 }

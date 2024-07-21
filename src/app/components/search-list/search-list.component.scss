@@ -13,30 +13,106 @@
 // Filter section styling
 .filter-search-wrapper {
   display:flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
   gap: 1rem;
+  padding: 100px;
+
+  @media screen and (max-width: 576px){
+    flex-direction: column;
+  }
 }
 .filters-wrapper {
     padding: 10px;
-    border-radius: 5px;
-    border: 1px solid $darkOrange
+    border-radius: 8px;
+    border: 1px solid $ligthGreen;
+
+    @media screen and (max-width: 576px){
+      display: none;
+    }
 }
 
 .filter-title {
-    @include heading2;
+    @include heading4;
     font-family: Poppins-Bold;
 }
 
 .filter-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
   padding: 10px;
+  height: max-content;
+
 }
 
 .filter-subtitle {
-  @include heading3;
+  @include body-large;
   font-family: Poppins-Bold;
 }
+.mat-typography p {
+  margin: 0px;
+}
+
+//search result part
+.search-result-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+  @media screen and (max-width: 576px){
+    flex: none;
+  }
+
+}
+
+.hotel-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 10px;
+  width:90%;
+  border: 0.5px solid $ligthGreen;
+  border-radius: 8px;
+
+  &:hover {
+    box-shadow:   0 4px 8px 0 $white, 0 6px 10px 0 $ligthGreen;
+  }
+
+  @media screen and (max-width: 576px){
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.hotel-info-title {
+  @include heading4;
+  font-family: Poppins-Bold;
+  
+}
+
+.hotel-score-info {
+  @include body-medium;
+  font-family: Poppins-Bold;
+}
+
+.show-btn {
+  width: 150px;
+  height: 48px;
+  background-color: $ligthGreen;
+  color: $white;
+  border-radius: 8px;
+  outline: none;
+  border: 0.5px solid $ligthGreen;
+  @include body-medium;
+  transition: font-weight 0.1s ease-in-out;
+  cursor: pointer;
+
+  &:hover{
+    @include body-large;
+    color: $ligthGreen;
+    background-color: $white;
+    border: 0.5px solid $ligthGreen;
+  }
+} 

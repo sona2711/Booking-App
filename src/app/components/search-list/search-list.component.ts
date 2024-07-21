@@ -1,8 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
-// import {JsonPipe} from '@angular/common';
+
 import { ProductDataService } from '../../services/product-data.service';
-import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-search-list',
@@ -11,54 +10,70 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 })
 export class SearchListComponent implements OnInit{
 constructor(
-  productList: ProductDataService,
-   chechbox: MatCheckboxModule,
-  //  JsonPipe: JsonPipe,
+  private dataService: ProductDataService,
    private _formBuilder: FormBuilder,
    formsModule: FormsModule,
-   reactiveFormsModule: ReactiveFormsModule
+   reactiveFormsModule: ReactiveFormsModule,
 
   ) {}
-searchList = []
+searchList = this.dataService.createDb()
 popularFilters = this._formBuilder.group({
   stars: false,
   hotels: false,
   freeWifi: false,
 });
 facilities = this._formBuilder.group({
-  stars: false,
-  hotels: false,
-  freeWifi: false,
+  wifi: false,
+  pool: false,
+  spa: false,
+  parking: false,
+  gym: false,
 });
 propertyType = this._formBuilder.group({
-  stars: false,
-  hotels: false,
-  freeWifi: false,
+  hotel: false,
+  motel: false,
+  resort: false,
+  hostel: false,
 });
 propertyRating = this._formBuilder.group({
-  stars: false,
-  hotels: false,
-  freeWifi: false,
+  stars_1: false,
+  stars_2: false,
+  stars_3: false,
+  stars_4: false,
+  stars_5: false,
+
 });
 reviewScore = this._formBuilder.group({
-  stars: false,
-  hotels: false,
-  freeWifi: false,
+  wonderful: false,
+  veryGood: false,
+  good: false,
+  pleasant: false,
 });
 distanceFrom = this._formBuilder.group({
-  stars: false,
-  hotels: false,
-  freeWifi: false,
+  lessThan1Km: false,
+  lessThan3Km: false,
+  lessThan5Km: false,
 });
 funThings = this._formBuilder.group({
   stars: false,
   hotels: false,
   freeWifi: false,
 });
+
+
+propertyAccessibility = this._formBuilder.group({
+  toiletWithGrabRails: false,
+  raisedToilet: false,
+  loweredSink: false,
+  auditoryGuidance: false,
+});
+
 roomAccessibility = this._formBuilder.group({
-  stars: false,
-  hotels: false,
-  freeWifi: false,
+  entireUnitLocatedOnGroundFloor: false,
+  rollInShower: false,
+  walkInShower: false,
+  raisedToilet: false,
+  lowerSink: false,
 });
 
 ngOnInit(): void {

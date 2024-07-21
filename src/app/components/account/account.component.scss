@@ -13,6 +13,8 @@
 *:focus {
   outline: none;
   box-shadow: none;
+  outline: none;
+  border:none;
 }
 
 .wrapper{
@@ -81,8 +83,6 @@
 }
 input {
   margin-bottom: 20px;
-  outline: none;
-  border:none;
   border-bottom: 1px solid $ligthOrange;
 }
 
