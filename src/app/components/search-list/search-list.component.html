@@ -1,3 +1,4 @@
+<app-booking-form></app-booking-form>
 <div class="container">
     <app-map></app-map>
     <main class="filter-search-wrapper">
@@ -7,9 +8,9 @@
             </div>
             <div class="filter-wrapper">
                 <h5>Your budget (per night)</h5>
-                <mat-slider min="200" max="500">
-                    <input value="300" matSliderStartThumb>
-                    <input value="400" matSliderEndThumb>
+                <mat-slider min="10" max="1500">
+                    <input value="12" matSliderStartThumb>
+                    <input value="1200" matSliderEndThumb>
                 </mat-slider>
                 <p>AMD1000 - AMD40,000</p>
             </div>
@@ -33,7 +34,7 @@
                 <p><mat-checkbox formControlName="motel">Motel</mat-checkbox></p>
                 <p><mat-checkbox formControlName="resort">Resort</mat-checkbox></p>
                 <p><mat-checkbox formControlName="hostel">Hostel</mat-checkbox></p>
-              </section>\
+              </section>
               <section class="example-section filter-wrapper" [formGroup]="propertyRating">
                 <h5 class="filter-subtitle">Property rating</h5>
                 <p><mat-checkbox formControlName="star_1"> 1</mat-checkbox></p>
@@ -55,11 +56,22 @@
                 <p><mat-checkbox formControlName="lessThan3Km">Less than 3 km</mat-checkbox></p>
                 <p><mat-checkbox formControlName="lessThan5Km">Less than 5 km</mat-checkbox></p>
               </section>
-              <section class="example-section filter-wrapper" [formGroup]="funThings">
+               <section class="example-section filter-wrapper" [formGroup]="funThings">
                 <h5 class="filter-subtitle">Fun Things To Do</h5>
-                <p><mat-checkbox formControlName="stars"> Stars</mat-checkbox></p>
-                <p><mat-checkbox formControlName="hotels">Hotels</mat-checkbox></p>
-                <p><mat-checkbox formControlName="freeWifi">Free Wifi</mat-checkbox></p>
+                <p><mat-checkbox formControlName="tennisCourt">Tennis Court</mat-checkbox></p>
+                <p><mat-checkbox formControlName="fishing">Fishing</mat-checkbox></p>
+                <p><mat-checkbox formControlName="skiing">Skiing</mat-checkbox></p>
+                <p><mat-checkbox formControlName="casino">Casino</mat-checkbox></p>
+                <p><mat-checkbox formControlName="poolTable">Pool Table</mat-checkbox></p>
+                <p><mat-checkbox formControlName="hotTub">Hot Tub</mat-checkbox></p>
+                <p><mat-checkbox formControlName="hiking">Hiking</mat-checkbox></p>
+                <p><mat-checkbox formControlName="bowling">Bowling</mat-checkbox></p>
+                <p><mat-checkbox formControlName="horsebackRiding">Horseback Riding</mat-checkbox></p>
+                <p><mat-checkbox formControlName="bicycleRental">Bicycle Rental</mat-checkbox></p>
+                <p><mat-checkbox formControlName="sauna">Sauna</mat-checkbox></p>
+                <p><mat-checkbox formControlName="fitnessCenter">Fitness Center</mat-checkbox></p>
+                <p><mat-checkbox formControlName="gameRoom">Game Room</mat-checkbox></p>
+                <p><mat-checkbox formControlName="spa">Spa</mat-checkbox></p>
               </section>
               <section class="example-section filter-wrapper" [formGroup]="propertyAccessibility">
                 <h5 class="filter-subtitle">Property Accessibility</h5>
@@ -86,7 +98,7 @@
               </div>
               <div class="hotel-info-wrapper">
                 <h4 class="hotel-info-title">{{hotel.name}}</h4>
-                <div class="hotel-location-info"><a href="#">{{hotel.location}}</a></div>
+                <div class="hotel-location-info">{{hotel.location}}</div>
                 <p class="hotel-score-info">{{hotel.reviewScore}}</p>
                 <p class="hotel-distance-info">{{hotel.distanceFromDowntown}}</p>
               </div>
@@ -96,3 +108,4 @@
         </section>
     </main>
 </div>
+<app-footer></app-footer>

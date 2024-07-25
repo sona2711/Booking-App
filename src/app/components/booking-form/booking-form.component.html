@@ -1,9 +1,8 @@
-
 <section class="booking-form-wrapper">
-  <form  class="booking-form"[formGroup]="searchForm" (formSubmit)="onSubmit()">
+  <form  class="booking-form"  [formGroup]="searchForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <mat-label>Destinetion</mat-label>
-      <mat-select>
+      <mat-select formControlName="destination">
         @for (city of  capitalCities; track city) {
           <mat-option [value]="city">{{city}}</mat-option>
         }
@@ -12,20 +11,29 @@
       <mat-form-field>
         <mat-label>Enter a date range</mat-label>
         <mat-date-range-input [rangePicker]="picker">
-          <input matStartDate placeholder="Start date">
-          <input matEndDate placeholder="End date">
+          <input matStartDate placeholder="Start date" formControlName="checkInDate">
+          <input matEndDate placeholder="End date" formControlName="checkOutDate">
         </mat-date-range-input>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-date-range-picker #picker></mat-date-range-picker>
       </mat-form-field>
-      <input
-        class="form-input"
-        formControlName="guests"
-        type="number"
-        min="1"
-        placeholder="Guests"
-      />
+      <mat-form-field class="example-full-width">
+        <mat-label>Guests Number</mat-label>
+        <input type="text"
+               placeholder="Pick one"
+               aria-label="Number"
+               matInput
+               formControlName="guests"
+               [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          @for (option of options; track option) {
+            <mat-option [value]="option">{{option}}</mat-option>
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+    <div>
       <button  class="submit-btn" type="submit">Search</button>
+    </div>
   </form>
 </section>
 

@@ -1,9 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Component , OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ProductDataService } from '../../services/product-data.service';
 import {ChangeDetectionStrategy} from '@angular/core';
 import {provideNativeDateAdapter} from '@angular/material/core';
+import { Router } from '@angular/router';
+import { ProductDataService } from '../../services/product-data.service';
 
 
 
@@ -18,18 +18,24 @@ import {provideNativeDateAdapter} from '@angular/material/core';
 })
 
 
-export class BookingFormComponent {
-  searchForm: FormGroup = this.fb.group({
-    destination: ['', Validators.required],
-    checkInDate: ['', Validators.required],
-    checkOutDate: ['', Validators.required],
-    guests: [1, [Validators.required, Validators.min(1)]]
-  });;
-
+export class BookingFormComponent  implements OnInit{
+  searchForm: FormGroup 
 
   capitalCities:string[] = [];
+  options: string[] = ['One', 'Two', 'Three']
   
-  constructor(private fb: FormBuilder, private http: HttpClient, private dataService: ProductDataService) {}
+  constructor(
+    private fb: FormBuilder,  
+    private router: Router,
+    private dataService: ProductDataService) {4
+
+      this.searchForm = this.fb.group({
+        destination: ['', Validators.required],
+        checkInDate: ['', Validators.required],
+        checkOutDate: ['', Validators.required],
+        guests: [1, [Validators.required, Validators.min(1)]]
+      });;
+    }
 
   ngOnInit(){
 
@@ -40,10 +46,8 @@ export class BookingFormComponent {
 
   onSubmit() {
     if (this.searchForm.valid) {
-      const searchData = this.searchForm.value;
-      
-    } else {
-      console.log('Form is invalid');
+      this.router.navigate(["/search-list"], {queryParams: this.searchForm.value});
+      console.log(this.searchForm.value)
     }
-  }
+}
 }

@@ -40,12 +40,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
 }
 .trand-info {
   position: relative;
   width: 300px;
+  height: 300px;
+  margin: 0 10px 0 10px;
   border-radius: 8px;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.02)
+  }
 
   @media screen and (max-width: 576px){
     width: 300px;
@@ -53,9 +61,9 @@
 }
 
 .trand-img {
-  padding: 10px;
+  border-radius: 8px;
   width: 300px;
-  height: 300px; 
+  object-fit: contain;
 }
 .scroll-container {
   display: flex;
@@ -86,9 +94,18 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: 1px solid #eeeeee;
+  border-radius: 8px;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  cursor: pointer;
 
+
+  &:hover {
+    outline: 1px solid #e6e2e2;
+  }
 }
-.explore-img {
+.explore-img ,
+.byProperty-img {
   padding: 10px;
   width: 200px;
   height: 200px; 
@@ -100,7 +117,7 @@
 
 
 div::-webkit-scrollbar{
-  width: 6px;
+  width: 3px;
 }
 
 div::-webkit-scrollbar-track{
@@ -111,4 +128,12 @@ div::-webkit-scrollbar-track{
 div::-webkit-scrollbar-thumb{
   background-color: $ligthGreen;
   border-radius: 12px;
+}
+
+.getInspiration-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
 }

@@ -1,3 +1,5 @@
+import { IBooking } from "./booking";
+
 export interface IHotel {
     id: number;
     name: string;
@@ -9,5 +11,9 @@ export interface IHotel {
     distanceFromDowntown: number; 
     reviewScore: number;          
     accessibility: string[];
+    funThings: string[];
     img: string[];
+    availableFrom: string;
+    availableTo: string;
+    bookings?: IBooking[];
 }
