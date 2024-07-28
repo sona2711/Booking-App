@@ -2,24 +2,18 @@
 <div class="container">
     <app-map></app-map>
     <main class="filter-search-wrapper">
-        <section class="filters-wrapper" aria-label="filters-wrapper">
-            <div class="filter-title-wrapper">
+          <section class="filters-wrapper" aria-label="filters-wrapper">
+              <div class="filter-title-wrapper">
                 <h4 class="filter-title">Filter by:</h4>
-            </div>
-            <div class="filter-wrapper">
+              </div>
+              <div class="filter-wrapper">
                 <h5>Your budget (per night)</h5>
-                <mat-slider min="10" max="1500">
-                    <input value="12" matSliderStartThumb>
-                    <input value="1200" matSliderEndThumb>
+                <mat-slider min="10" max="1500" [formGroup] ="priceRange">
+                    <input value="12" matSliderStartThumb formControlName="priceFrom">
+                    <input value="1200" matSliderEndThumb formControlName="priceTo">
                 </mat-slider>
                 <p>AMD1000 - AMD40,000</p>
-            </div>
-            <section class="example-section filter-wrapper" [formGroup]="popularFilters">
-                <h5 class="filter-subtitle">Popular filters</h5>
-                <p><mat-checkbox formControlName="stars"> Stars</mat-checkbox></p>
-                <p><mat-checkbox formControlName="hotels">Hotels</mat-checkbox></p>
-                <p><mat-checkbox formControlName="freeWifi">Free Wifi</mat-checkbox></p>
-              </section>
+              </div>
               <section class="example-section filter-wrapper" [formGroup]="facilities">
                 <h5 class="filter-subtitle">Facilities</h5>
                 <p><mat-checkbox formControlName="wifi"> Free Wifi</mat-checkbox></p>
@@ -34,14 +28,16 @@
                 <p><mat-checkbox formControlName="motel">Motel</mat-checkbox></p>
                 <p><mat-checkbox formControlName="resort">Resort</mat-checkbox></p>
                 <p><mat-checkbox formControlName="hostel">Hostel</mat-checkbox></p>
+                <p><mat-checkbox formControlName="apartament">Apartament</mat-checkbox></p>
+                <p><mat-checkbox formControlName="villa">Villa</mat-checkbox></p>
               </section>
-              <section class="example-section filter-wrapper" [formGroup]="propertyRating">
+              <section class="example-section filter-wrapper" [formGroup]="propertyRating" >
                 <h5 class="filter-subtitle">Property rating</h5>
-                <p><mat-checkbox formControlName="star_1"> 1</mat-checkbox></p>
-                <p><mat-checkbox formControlName="star_2"> 2</mat-checkbox></p>
-                <p><mat-checkbox formControlName="star_3"> 3</mat-checkbox></p>
-                <p><mat-checkbox formControlName="star_4"> 4</mat-checkbox></p>
-                <p><mat-checkbox formControlName="star_5"> 5</mat-checkbox></p>
+                <p><mat-checkbox formControlName="star1"> 1 star</mat-checkbox></p>
+                <p><mat-checkbox formControlName="star2"> 2 stars</mat-checkbox></p>
+                <p><mat-checkbox formControlName="star3"> 3 stars</mat-checkbox></p>
+                <p><mat-checkbox formControlName="star4"> 4 stars</mat-checkbox></p>
+                <p><mat-checkbox formControlName="star5"> 5 stars</mat-checkbox></p>
               </section>
               <section class="example-section filter-wrapper" [formGroup]="reviewScore">
                 <h5 class="filter-subtitle">Review Score</h5>
@@ -91,18 +87,28 @@
               </section>
         </section>
         <section class="search-result-wrapper" aria-label="search-result-wrapper">
-          @for (hotel of  searchList; track hotel) {
+          @for (hotel of filteredList; track hotel) {
             <div class="hotel-container">
               <div class="hotel-img-wrapper">
                 <img src={{hotel.img[0]}} alt="Hotel Image" width="300px"/>
               </div>
               <div class="hotel-info-wrapper">
                 <h4 class="hotel-info-title">{{hotel.name}}</h4>
-                <div class="hotel-location-info">{{hotel.location}}</div>
-                <p class="hotel-score-info">{{hotel.reviewScore}}</p>
-                <p class="hotel-distance-info">{{hotel.distanceFromDowntown}}</p>
+                <div class="location-distance-wrapper">
+                  <a href="#" class="hotel-location-info">{{hotel.location}}</a>
+                  <p class="hotel-distance-info">{{hotel.distanceFromDowntown}} km from downtown</p>
+                  <p>{{hotel.propertyType}}</p>
+                </div>
+                <div class="property-info" *ngFor="let info of hotel.facilities">
+                  <span class="icon material-icons md-16">checked</span>
+                  <span>{{info}}</span>
+                </div>
               </div>
-              <button class="show-btn">See Availability</button>
+              <div class="score-btn-wrapper">
+                <p class="hotel-score-info">{{hotel.reviewScore}}<span class="icon material-icons md-16">book</span></p>
+                <button class="show-btn">See Availability</button>
+              </div>
+              
             </div>
           }
         </section>

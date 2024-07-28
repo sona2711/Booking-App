@@ -9,7 +9,50 @@
   src: url(../../../assets/Fonts/Poppins-Bold.ttf);
 }
 
-*:focus {
-  outline: none;
-  box-shadow: none;
+
+.header {
+  padding: 0 100px 0 100px;
+  text-align: left;
+  background-color: $darkOrange;
+  color: $white;
 }
+.contact-us-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 100px;
+  padding: 0 100px;
+}
+
+.contact-us-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  padding: 10px;
+  border:0.5px solid  $darkGreen;
+  border-radius: 8px;
+  height: max-content;
+  background-color: $white;
+  margin: 20px 0;
+}
+
+.dark-btn {
+  width: 200px;
+  height: 48px;
+  background-color: $ligthGreen;
+  color: $white;
+  border-radius: 8px;
+  outline: none;
+  border: 0.5px solid $ligthGreen;
+  @include body-medium;
+  font-family: Poppins-Medium;
+  transition: font-weight 0.1s ease-in-out;
+  cursor: pointer;
+
+  &:hover{
+    font-family: Poppins-Bold;
+    background-color: $darkGreen;
+  }
+} 

@@ -65,7 +65,7 @@ export class ProductDataService {
 
     
     for (let i = 1; i <= count; i++) {
-      const availableFrom = this.getRandomDate(new Date(2024,0,1), new Date(2024,11,31));
+      const availableFrom = this.getRandomDate(new Date(2024,6,1), new Date(2024,9,31));
       const availableTo = this.getRandomDate(availableFrom, new Date(availableFrom.getFullYear(), availableFrom.getMonth()+ 1, availableFrom.getDate()));
 
       hotels.push({

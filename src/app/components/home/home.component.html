@@ -4,42 +4,42 @@
     <section class="tranding-wrapper" aria-label="tranding-wrapper">
         <h3 class="section-title">Trending destinations</h3>
         <div class="scroll-container">
-            <div class="trand-info">
+            <div class="trand-info" (click)="onCardClick('Yerevan')">
                 <img class="trand-img"
                 src="https://cf.bstatic.com/xdata/images/city/600x600/685453.jpg?k=7a470ff43b0210aa5f418ece0e04324c742a1a0ea4e6744ce093ed94bdc5581b&o=" 
                 alt="Country"
                 />
                 <h3 class="section-subtitle">Yerevan</h3>
             </div>
-            <div class="trand-info">
+            <div class="trand-info"  (click)="onCardClick('Tbilisi')">
                 <img class="trand-img"
                 src="https://cf.bstatic.com/xdata/images/city/600x600/691464.jpg?k=9d065dc574012a9e15ef4f2fe25dc035d69f7061ad2c77d54eddb3dbbde8d6d3&o=" 
                 alt="Country"
                 />
                 <h3 class="section-subtitle">Tbilisi</h3>
             </div>
-            <div class="trand-info">
+            <div class="trand-info" (click)="onCardClick('Rome')">
                 <img class="trand-img"
                 src="https://cf.bstatic.com/xdata/images/city/600x600/977192.jpg?k=9b5deb1736f05b131436cd8ee666e23a766e74c39720fce87cec8677238fe207&o=" 
                 alt="Country"
                 />
                 <h3 class="section-subtitle">Rome</h3>
             </div>
-            <div class="trand-info">
+            <div class="trand-info" (click)="onCardClick('Dubai')">
                 <img class="trand-img"
                 src="https://cf.bstatic.com/xdata/images/city/600x600/977220.jpg?k=ee4b7b42c35b8cbf09c8ddb7630092b40cd706fec153c41904ed6e252a883938&o=" 
                 alt="Country"
                 />
                 <h3 class="section-subtitle">Dubai</h3>
             </div>
-            <div class="trand-info">
+            <div class="trand-info" (click)="onCardClick('Tokyo')">
                 <img class="trand-img"
                 src="https://cf.bstatic.com/xdata/images/city/600x600/691621.jpg?k=c42cfe573c89d884b935ea9b3936e0aa985622df29d7608c9b4a8cd2ec403c5c&o=" 
                 alt="Country"
                 />
-                <h3 class="section-subtitle">Batumi</h3>
+                <h3 class="section-subtitle">Tokyo</h3>
             </div>
-            <div class="trand-info">
+            <div class="trand-info" (click)="onCardClick('Yerevan')">
                 <img class="trand-img"
                 src="https://cf.bstatic.com/xdata/images/city/600x600/685453.jpg?k=7a470ff43b0210aa5f418ece0e04324c742a1a0ea4e6744ce093ed94bdc5581b&o=" 
                 alt="Country"
@@ -100,42 +100,42 @@
     <section class="byProperty-wrapper" aria-label="byProperty-wrapper">
         <h4 class="section-title">Browse by property type</h4>
         <div class="scroll-container">
-            <div class="explore-info">
+            <div class="explore-info" (click)="onPropertyClick('Hotel')" >
                 <img class="byProperty-img"
                 src="https://r-xx.bstatic.com/xdata/images/xphoto/263x210/57584488.jpeg?k=d8d4706fc72ee789d870eb6b05c0e546fd4ad85d72a3af3e30fb80ca72f0ba57&o=" 
                 alt="Hotel"
                 />
                 <h3 class="subtitle">Hotel</h3>
             </div>
-            <div class="explore-info">
+            <div class="explore-info" (click)="onPropertyClick('Apartament')">
                 <img class="byProperty-img"
                 src="https://q-xx.bstatic.com/xdata/images/hotel/263x210/119467716.jpeg?k=f3c2c6271ab71513e044e48dfde378fcd6bb80cb893e39b9b78b33a60c0131c9&o=" 
                 alt="Apartaments"
                 />
                 <h3 class="subtitle">Apartaments</h3>
             </div>
-            <div class="explore-info">
+            <div class="explore-info" (click)="onPropertyClick('Resort')">
                 <img class="byProperty-img"
                 src="https://q-xx.bstatic.com/xdata/images/xphoto/263x210/45450084.jpeg?k=f8c2954e867a1dd4b479909c49528531dcfb676d8fbc0d60f51d7b51bb32d1d9&o=" 
                 alt="Resorts"
                 />
                 <h3 class="subtitle">Resorts</h3>
             </div>
-            <div class="explore-info">
+            <div class="explore-info" (click)="onPropertyClick('Villa')">
                 <img class="byProperty-img"
                 src="https://r-xx.bstatic.com/xdata/images/hotel/263x210/100235855.jpeg?k=5b6e6cff16cfd290e953768d63ee15f633b56348238a705c45759aa3a81ba82b&o=" 
                 alt="Villas"
                 />
                 <h3 class="subtitle">Villas</h3>
             </div>
-            <div class="explore-info">
+            <div class="explore-info" (click)="onPropertyClick('Hostel')">
                 <img class="byProperty-img"
                 src="https://q-xx.bstatic.com/xdata/images/xphoto/263x210/45450082.jpeg?k=beb101b827a729065964523184f4db6cac42900c2415d71d516999af40beb7aa&o=" 
                 alt="Hostels"
                 />
                 <h3 class="subtitle">Hostels</h3>
             </div>
-            <div class="explore-info">
+            <div class="explore-info" (click)="onPropertyClick('Motel')">
                 <img class="byProperty-img"
                 src="https://q-xx.bstatic.com/xdata/images/xphoto/263x210/45450093.jpeg?k=aa5cc7703f3866af8ffd6de346c21161804a26c3d0a508d3999c11c337506ae1&o=" 
                 alt="Motels"

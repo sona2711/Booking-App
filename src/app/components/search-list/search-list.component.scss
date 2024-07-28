@@ -26,6 +26,7 @@
     padding: 10px;
     border-radius: 8px;
     border: 1px solid $ligthGreen;
+    width: 20%;
 
     @media screen and (max-width: 576px){
       display: none;
@@ -40,6 +41,7 @@
 .filter-wrapper {
   padding: 10px;
   height: max-content;
+  border-bottom: 0.3px solid $darkGreen;
 
 }
 
@@ -69,10 +71,10 @@
 .hotel-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
   padding: 10px;
-  width:90%;
+  width:95%;
   border: 0.5px solid $ligthGreen;
   border-radius: 8px;
 
@@ -86,15 +88,50 @@
   }
 }
 
+.hotel-info-wrapper {
+  flex:1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px;
+}
+
+.location-distance-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
 .hotel-info-title {
   @include heading4;
   font-family: Poppins-Bold;
   
 }
 
-.hotel-score-info {
+.hotel-score-info,
+.hotel-location-info {
   @include body-medium;
   font-family: Poppins-Bold;
+}
+
+
+.icon {
+  color: $ligthOrange;
+}
+
+.property-info {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.score-btn-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
 }
 
 .show-btn {
@@ -110,9 +147,9 @@
   cursor: pointer;
 
   &:hover{
-    @include body-large;
-    color: $ligthGreen;
-    background-color: $white;
-    border: 0.5px solid $ligthGreen;
+    font-family: Poppins-Bold;
+    background-color: $darkGreen;
+    border: 0.5px solid $darkGreen;
   }
 } 
+
