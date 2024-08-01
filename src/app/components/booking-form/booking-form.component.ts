@@ -22,7 +22,7 @@ export class BookingFormComponent  implements OnInit{
   searchForm: FormGroup 
 
   capitalCities:string[] = [];
-  options: string[] = ['One', 'Two', 'Three']
+  options: number[] = [1, 2, 4, 5, 6]
   
   constructor(
     private fb: FormBuilder,  

@@ -20,6 +20,7 @@
 
   @media screen and (max-width: 576px){
     flex-direction: column;
+    padding: 40px;
   }
 }
 .filters-wrapper {
@@ -79,7 +80,7 @@
   border-radius: 8px;
 
   &:hover {
-    box-shadow:   0 4px 8px 0 $white, 0 6px 10px 0 $ligthGreen;
+    box-shadow: 0 4px 8px 0 $white, 0 6px 10px 0 $ligthGreen;
   }
 
   @media screen and (max-width: 576px){
@@ -115,6 +116,9 @@
   font-family: Poppins-Bold;
 }
 
+.hotel-img {
+  max-width: 300px;
+}
 
 .icon {
   color: $ligthOrange;
@@ -132,6 +136,12 @@
   justify-content: space-between;
   align-items: flex-end;
   gap: 1rem;
+
+  @media screen and (max-width: 576px){
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+  }
 }
 
 .show-btn {
