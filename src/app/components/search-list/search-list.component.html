@@ -8,11 +8,16 @@
               </div>
               <div class="filter-wrapper">
                 <h5>Your budget (per night)</h5>
-                <mat-slider min="10" max="1500" [formGroup] ="priceRange">
-                    <input value="12" matSliderStartThumb formControlName="priceFrom">
-                    <input value="1200" matSliderEndThumb formControlName="priceTo">
+                <mat-slider min="10" max="100" [formGroup] ="priceRange">
+                    <input value="10" matSliderStartThumb formControlName="priceFrom" id="priceFrom">
+                    <input value="100" matSliderEndThumb formControlName="priceTo" id="priceTo">
                 </mat-slider>
-                <p>AMD1000 - AMD40,000</p>
+                <div class="price-range-wrapper">
+                  <span>Price: </span>
+                  <label for="priceFrom" class="hotel-score-info">{{this.priceRange.controls['priceFrom'].value | currency}}</label>
+                  <span class="hotel-score-info"> - </span>
+                  <label for="priceTo" class="hotel-score-info">{{this.priceRange.controls['priceTo'].value | currency}}</label>
+                </div>
               </div>
               <section class="example-section filter-wrapper" [formGroup]="facilities">
                 <h5 class="filter-subtitle">Facilities</h5>
@@ -105,10 +110,10 @@
                 </div>
               </div>
               <div class="score-btn-wrapper">
-                <p class="hotel-score-info">{{hotel.reviewScore}}<span class="icon material-icons md-16">book</span></p>
+                <p class="hotel-score-info"><span class="icon material-icons md-16">book</span>{{hotel.reviewScore}}</p>
+                <p class="hotel-info-title">{{hotel.price | currency}}</p>
                 <button class="show-btn">See Availability</button>
               </div>
-              
             </div>
           }
         </section>

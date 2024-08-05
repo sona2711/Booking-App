@@ -83,6 +83,7 @@ export class ProductDataService {
         img: this.getHotelImg(hotelImg),
         availableFrom: availableFrom.toISOString().split('T')[0],
         availableTo: availableTo.toISOString().split('T')[0],
+        price: Math.floor(Math.random()*100)+1,
         bookings: [],
       });
     }

@@ -15,5 +15,6 @@ export interface IHotel {
     img: string[];
     availableFrom: string;
     availableTo: string;
+    price: number| null;
     bookings?: IBooking[];
 }

@@ -17,8 +17,8 @@ searchList:IHotel[] = [];
 filteredList:IHotel[] = [];
 
 priceRange = this._formBuilder.group({
-  priceFrom: 12,
-  priceTo: 1500,
+  priceFrom: 10,
+  priceTo: 100,
 })
 
 
@@ -114,9 +114,8 @@ ngOnInit(): void {
     console.log(params)
     if (destination && checkInDate && checkOutDate && guests){
     this.searchList = this.dataService.getFilteredHotels(destination, checkInDate, checkOutDate, guests)
-    console.log(this.searchList)
+    
     this.filteredList = [...this.searchList]
-    console.log(this.filteredList)
     }
     if (location) {
       this.filterByLocation(location);
@@ -129,53 +128,100 @@ ngOnInit(): void {
 
 
 
-  this.facilities.valueChanges.subscribe(() => this.getFilteredList());
-  this.propertyRating.valueChanges.subscribe(() => this.getFilteredList());
-  this.reviewScore.valueChanges.subscribe(() => this.getFilteredList());
-  this.distanceFrom.valueChanges.subscribe(() => this.getFilteredList());
-  this.funThings.valueChanges.subscribe(() => this.getFilteredList());
-  this.propertyAccessibility.valueChanges.subscribe(() => this.getFilteredList());
-  this.roomAccessibility.valueChanges.subscribe(() => this.getFilteredList());
+  // this.priceRange.valueChanges.subscribe(() => this.filterByPrice());
+  this.propertyType.valueChanges.subscribe(()=> this.filterByProperty())
+  this.facilities.valueChanges.subscribe(() => this.filterByFacilities());
+  this.propertyRating.valueChanges.subscribe(() => this.filterByPropertyRating());
+  this.reviewScore.valueChanges.subscribe(() => this.filterByReviewScore());
+  this.distanceFrom.valueChanges.subscribe(() => this.filterByDistanceFrom());
+  this.funThings.valueChanges.subscribe(() => this.filterByFunThings());
+  this.propertyAccessibility.valueChanges.subscribe(() => this.filterByPropertyAccessibility());
+  this.roomAccessibility.valueChanges.subscribe(() => this.filterByRoomAccessibility());
 
 }
 
-getFilteredList(){
-  this.filteredList = this.searchList.filter((hotel: IHotel) => {
-    return (
-      this.checkFilters(this.facilities.value, hotel.facilities) ||
-      this.checkFilters(this.propertyType.value, hotel.propertyType) ||
-      this.checkFilters(this.propertyRating.value, hotel.rating) ||
-      this.checkFilters(this.reviewScore.value, hotel.reviewScore) ||
-      this.checkFilters(this.distanceFrom.value, hotel.distanceFromDowntown) ||
-      this.checkFilters(this.funThings.value, hotel.funThings) ||
-      this.checkFilters(this.propertyAccessibility.value, hotel.accessibility) ||
-      this.checkFilters(this.roomAccessibility.value, hotel.roomsAvailable)
-    );
-  });
-  console.log(this.filteredList)
-  return this.filteredList
-}
+// getFilteredList(){
+//   this.filteredList = this.searchList.filter(hotel => {
+//     return this.filterByPrice(hotel) &&
+//            this.filterByFacilities(hotel) &&
+//            this.filterByProperty(hotel) &&
+//            this.filterByPropertyRating(hotel) &&
+//            this.filterByReviewScore(hotel) &&
+//            this.filterByDistanceFrom(hotel) &&
+//            this.filterByFunThings(hotel) &&
+//            this.filterByPropertyAccessibility(hotel) &&
+//            this.filterByRoomAccessibility(hotel);
+//   });
+// }
 
 
+// filterByPrice() {
+//   const priceFrom: number | null = this.priceRange.controls['priceFrom'].value;
+//   const priceTo: number | null  = this.priceRange.controls['priceTo'].value;
+//   this.filteredList = this.searchList.filter(hotel => {
+//   return hotel.price >= priceFrom && hotel.price <= priceTo
+//   })
+// }
 
-checkFilters(filters: any, hotelAttributes: any): boolean {
-  for (let key in filters) {
-    if (filters[key]) {
-      if (Array.isArray(hotelAttributes)) {
-        if (!hotelAttributes.includes(key)) {
-          return false;
-        }
-      } else {
-        if (typeof hotelAttributes === 'string' || typeof hotelAttributes === 'number') {
-          if (hotelAttributes.toString() !== key) {
-            return false;
-          }
-        }
-      }
-    }
-  }
-  return true;
-}
+filterByFacilities() {
+  const facilities: any = this.facilities.value;
+  this.filteredList = this.searchList.filter(hotel => {
+  return Object.keys(facilities).every(facility => !facilities[facility] || hotel.facilities.includes(facility));
+})
+};
+
+filterByProperty() {
+  const propertyTypes: any = this.propertyType.value;
+  this.filteredList = this.searchList.filter(hotel => {
+  return propertyTypes[hotel.propertyType] === true;
+})
+};
+
+filterByPropertyRating() {
+  const propertyRatings: any = this.propertyRating.value;
+  this.filteredList = this.searchList.filter(hotel => {
+  return propertyRatings[`star${hotel.rating}`] === true;
+})
+};
+
+filterByReviewScore() {
+  const reviewScores: any = this.reviewScore.value;
+  this.filteredList = this.searchList.filter(hotel => {
+  return reviewScores[hotel.reviewScore] === true;
+})
+};
+
+filterByDistanceFrom() {
+  const distanceFrom: any = this.distanceFrom.value;
+  this.filteredList = this.searchList.filter(hotel => {
+  return distanceFrom[`lessThan${hotel.distanceFromDowntown}Km`] === true;
+})
+};
+
+
+filterByFunThings() {
+  const funThings: any = this.funThings.value;
+  this.filteredList = this.searchList.filter(hotel => {
+  return Object.keys(funThings).every(thing => !funThings[thing] || hotel.funThings.includes(thing));
+})
+};
+
+
+filterByPropertyAccessibility() {
+  const propertyAccessibility: any  = this.propertyAccessibility.value;
+  this.filteredList = this.searchList.filter(hotel => {
+  return Object.keys(propertyAccessibility).every(accessibility => !propertyAccessibility[accessibility] || hotel.accessibility.includes(accessibility));
+})
+};
+
+
+filterByRoomAccessibility() {
+  const roomAccessibility: any  = this.roomAccessibility.value;
+  this.filteredList = this.searchList.filter(hotel => {
+  return Object.keys(roomAccessibility).every(accessibility => !roomAccessibility[accessibility] || hotel.accessibility.includes(accessibility));
+})
+};
+
 
 filterByLocation(location: string): IHotel[] {
   this.searchList = this.dataService.createDb()
