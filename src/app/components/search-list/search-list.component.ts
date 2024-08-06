@@ -128,7 +128,7 @@ ngOnInit(): void {
 
 
 
-  // this.priceRange.valueChanges.subscribe(() => this.filterByPrice());
+  this.priceRange.valueChanges.subscribe(() => this.filterByPrice());
   this.propertyType.valueChanges.subscribe(()=> this.filterByProperty())
   this.facilities.valueChanges.subscribe(() => this.filterByFacilities());
   this.propertyRating.valueChanges.subscribe(() => this.filterByPropertyRating());
@@ -140,33 +140,28 @@ ngOnInit(): void {
 
 }
 
-// getFilteredList(){
-//   this.filteredList = this.searchList.filter(hotel => {
-//     return this.filterByPrice(hotel) &&
-//            this.filterByFacilities(hotel) &&
-//            this.filterByProperty(hotel) &&
-//            this.filterByPropertyRating(hotel) &&
-//            this.filterByReviewScore(hotel) &&
-//            this.filterByDistanceFrom(hotel) &&
-//            this.filterByFunThings(hotel) &&
-//            this.filterByPropertyAccessibility(hotel) &&
-//            this.filterByRoomAccessibility(hotel);
-//   });
-// }
 
 
-// filterByPrice() {
-//   const priceFrom: number | null = this.priceRange.controls['priceFrom'].value;
-//   const priceTo: number | null  = this.priceRange.controls['priceTo'].value;
-//   this.filteredList = this.searchList.filter(hotel => {
-//   return hotel.price >= priceFrom && hotel.price <= priceTo
-//   })
-// }
+filterByPrice() {
+  const priceFrom: number | null = this.priceRange.controls['priceFrom'].value ?? 10;
+  const priceTo: number | null  = this.priceRange.controls['priceTo'].value ?? 100;
+  this.filteredList = this.searchList.filter(hotel => {
+    const hotelPrice = hotel.price ?? 10
+  return hotelPrice >= priceFrom && hotelPrice <= priceTo
+  })
+}
 
 filterByFacilities() {
   const facilities: any = this.facilities.value;
+  console.log(facilities)
   this.filteredList = this.searchList.filter(hotel => {
-  return Object.keys(facilities).every(facility => !facilities[facility] || hotel.facilities.includes(facility));
+    const hasAllFacilities = Object.keys(facilities).every(facility => {
+      return !facilities[facility] || hotel.facilities.includes(facility);
+    });
+
+    console.log(hasAllFacilities);
+    
+  return hasAllFacilities
 })
 };
 
