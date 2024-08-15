@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IHotel } from '../../Interface/hotel';
+import { IHotel , IData} from '../../Interface/hotel';
 import { Observable, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { IBooking } from '../../Interface/booking';
@@ -10,7 +10,7 @@ import { IBooking } from '../../Interface/booking';
 })
 export class ProductDataService {
   private hotels!: IHotel[];
-  capitalCities: string[] = [];
+  capitalCities: IData[] = [];
   private cityUrl = "https://restcountries.com/v3.1/all";
 
    bookings: IBooking[]= [
@@ -31,16 +31,22 @@ export class ProductDataService {
     });
   }
 
-  loadCapitalCities(): Observable<string[]> {
+   
+  
+  loadCapitalCities(): Observable<IData[]> {
     return this.http.get<any[]>(this.cityUrl).pipe(
       map(data => 
         data
-          .map(country => country.capital)
-          .filter(capital => capital && capital.length > 0)
-          .flat()
-          .sort()
-      ))
+          .filter(country => country.capital && country.capital.length > 0 && country.maps?.googleMaps)
+          .map(country => ({
+            capital: country.capital[0],
+            mapUrl: country.maps.googleMaps
+          }))
+          .sort((a, b) => a.capital.localeCompare(b.capital))
+      )
+    );
   }
+  
 
   createDb() {
     const hotels: IHotel[] = this.generateHotels(1000);
@@ -67,11 +73,13 @@ export class ProductDataService {
     for (let i = 1; i <= count; i++) {
       const availableFrom = this.getRandomDate(new Date(2024,6,1), new Date(2024,9,31));
       const availableTo = this.getRandomDate(availableFrom, new Date(availableFrom.getFullYear(), availableFrom.getMonth()+ 1, availableFrom.getDate()));
+      const { city, mapUrl } = this.getCityName();
+
 
       hotels.push({
         id: i,
         name: `Hotel ${i}`,
-        location: this.getCityName(),
+        location: city,
         roomsAvailable: Math.floor(Math.random() * 100) + 1,
         rating: Math.floor(Math.random() * 5) + 1,
         facilities: this.getRandomElements(facilities),
@@ -85,6 +93,7 @@ export class ProductDataService {
         availableTo: availableTo.toISOString().split('T')[0],
         price: Math.floor(Math.random()*100)+1,
         bookings: [],
+        mapUrl: mapUrl
       });
     }
     return hotels;
@@ -98,11 +107,20 @@ export class ProductDataService {
     return arr.filter(() => Math.random() > 0.5);
   }
 
-  getCityName(): string {
-    if (this.capitalCities.length === 0) return 'Unknown City';
-    return this.capitalCities[Math.floor(Math.random() * this.capitalCities.length)];
-  }
+  // getCityName(): string {
+  //   if (this.capitalCities.length === 0) return 'Unknown City';
+  //   return this.capitalCities[Math.floor(Math.random() * this.capitalCities.length)];
+  // }
 
+  getCityName(): { city: string, mapUrl: string } {
+    if (this.capitalCities.length === 0) {
+      return { city: 'Unknown City', mapUrl: '' };
+    }
+  
+    const randomCity = this.capitalCities[Math.floor(Math.random() * this.capitalCities.length)];
+    return { city: randomCity.capital, mapUrl: randomCity.mapUrl };
+  }
+  
   getHotelImg(arr: string[], num: number = 3): string[] {
     const shuffled = arr.sort(() => 0.5 - Math.random());
     return shuffled.slice(0, num);

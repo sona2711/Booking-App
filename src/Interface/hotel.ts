@@ -17,4 +17,12 @@ export interface IHotel {
     availableTo: string;
     price: number| null;
     bookings?: IBooking[];
+    mapUrl?: string
+}
+
+
+export interface IData {
+    capital: string,
+    mapUrl: string
+
 }

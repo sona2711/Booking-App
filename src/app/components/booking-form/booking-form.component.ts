@@ -9,6 +9,7 @@ import { ProductDataService } from '../../services/product-data.service';
 
 
 
+
 @Component({
   selector: 'app-booking-form',
   templateUrl: './booking-form.component.html',
@@ -40,7 +41,8 @@ export class BookingFormComponent  implements OnInit{
   ngOnInit(){
 
     this.dataService.loadCapitalCities().subscribe(capitals => {
-    this.capitalCities = capitals;
+      console.log(capitals)
+    this.capitalCities = capitals.map(el => el.capital)
   })
   }
 
